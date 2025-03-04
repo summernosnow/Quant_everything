@@ -19,3 +19,5 @@
 |  oa4   |    practical accuracy (%) drop of ours, i.e., diff(7, 6)     |             0.4%              |
 |  os1   |              maximal speedup, i.e., div(10, 11)              |          1.197/1.014          |
 |  os2   |             speedup (%) of ours, i.e., div(10,9)             |          1.186/1.005          |
+
+# Yolov10x
