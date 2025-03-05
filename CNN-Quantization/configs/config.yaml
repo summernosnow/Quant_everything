@@ -1,0 +1,32 @@
+
+model:
+    model_id: "stabilityai/stable-diffusion-xl-base-1.0"
+    cache_dir: "/share/public/diffusion_quant/huggingface/"
+    model_type: 'sdxl'  # ['sd','sdxl']
+conditional: True
+mixed_precision: [2,4,8]
+calib_data:
+    path: "./calib_data/calib_data_bs512_random.pt"  # 指定校准数据集的路径
+    batch_size: 32  # 每次校准时选用calib_data的batch size
+quant:
+    weight:
+        optimization:
+        quantizer:
+            n_bits: 8  # 量化位宽
+            channel_wise: True
+            scale_method: 'min_max'  # 朴素的min-max量化
+            # scale_method: 'grid_search_lp', 这里指的是用mse error最小化来优化量化参数
+            round_mode: 'nearest'
+            sym: True
+    activation:
+        optimization:
+        quantizer:
+            n_bits: 8
+            channel_wise: False
+            scale_method: 'min_max'
+            round_mode: 'nearest_ste'
+            running_stat: True
+            sym: True
+    grad_checkpoint: False
+resume_with_w_quantized:
+    path: None
