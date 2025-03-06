@@ -3,12 +3,12 @@
 * pip install -e .
 
 ## 代码执行流程
-- 在推理过程中手动提取calib data: 
+
+### calibration dataset
 ```
-# --------- conduct quantized inference --------
-arch="vgg"  # 模型结构
-d="/mnt/public/yuanzhihang/imagenet"  # 数据集的data路径
-CUDA_VISIBLE_DEVICES=$1 python scripts/get_calib_data.py --arch $arch -d $d --evaluate
+d="/mnt/yixiaojie/coco"  # 数据集的data路径
+outdir="/root/yixiaojie/CNN-Quantization/calib_data"
+CUDA_VISIBLE_DEVICES=$1 python scripts/get_calib_coco_data.py --d $d --outdir $outdir --calib_images 256
 ```
 
 ### PTQ
