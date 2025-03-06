@@ -23,12 +23,17 @@ CUDA_VISIBLE_DEVICES=$1 python scripts/ptq.py --outdir $outdir --pretrained --ar
 
 ### mixed_precision_quantization
 ```
-BASE_PATH="./quant_output_random/vgg_w4a8"  # PTQ结果存储的路径
-arch="vgg"
-d="/mnt/public/yuanzhihang/imagenet"  # 数据集的data路径
-# 如果这个不是None，则perform混合精度推理
-config_weight_mp="/home/fangtongcheng/base_code_test/Quant_Base_Model/pytorch-classification/quant_output_random/vgg_w4a8/vgg_w4/weight_4.00.yaml"  
-# --keep_fp
-# 开启这个会把最敏感的层置为fp16，实施fp16和int的混合精度推理
-# --------- conduct quantized inference --------
-CUDA_VISIBLE_DEVICES=$1 python scripts/quant_inference.py --base_path $BASE_PATH --pretrained --arch $arch --skip_quant_act -d $d --config_weight_mp $config_weight_mp
+BASE_PATH="./quant_output_random/yolov10x1_w8a8"
+arch="yolov10x"
+sensitivity_type="weight"
+min_bit=8
+required_map=0.448
+
+# --------- conduct mixed precision quantization --------
+CUDA_VISIBLE_DEVICES=0 python scripts/mixed_precision_quantization.py \
+    --base_path $BASE_PATH \
+    --pretrained \
+    --arch $arch \
+    --sensitivity_type $sensitivity_type \
+    --min_bit $min_bit \
+    --required_map $required_map
