@@ -13,12 +13,12 @@ CUDA_VISIBLE_DEVICES=$1 python scripts/get_calib_data.py --arch $arch -d $d --ev
 
 ### PTQ
 ```
-config="/home/fangtongcheng/base_code_test/Quant_Base_Model/pytorch-classification/configs/config.yaml"  # 量化配置config
-arch="vgg"  # 模型结构
-outdir="quant_output_random/vgg_w4a8_mse"  # PTQ输出存储路径
+config="/root/yixiaojie/CNN-Quantization/configs/configyolov10-1.yaml"
+arch="yolov10x"
+outdir="quant_output_random/yolov10x1_w8a8"
 
-# --------- conduct quantized inference --------
-CUDA_VISIBLE_DEVICES=$1 python scripts/ptq.py --outdir $outdir --pretrained --arch $arch --config $config
+# --------- conduct ptq --------
+CUDA_VISIBLE_DEVICES=0 python scripts/ptq.py --outdir $outdir --pretrained --arch $arch --config $config
 ```
 
 ### mixed_precision_quantization
