@@ -21,12 +21,7 @@ outdir="quant_output_random/vgg_w4a8_mse"  # PTQ输出存储路径
 CUDA_VISIBLE_DEVICES=$1 python scripts/ptq.py --outdir $outdir --pretrained --arch $arch --config $config
 ```
 
-
-
-
-
-
-### quant_inference
+### mixed_precision_quantization
 ```
 BASE_PATH="./quant_output_random/vgg_w4a8"  # PTQ结果存储的路径
 arch="vgg"
