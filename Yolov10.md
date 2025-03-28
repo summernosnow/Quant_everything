@@ -52,3 +52,4 @@
 export LD_LIBRARY_PATH=/home/yixiaojie/Ascend/ascend-toolkit/latest/x86_64-linux/devlib/:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=/home/yixiaojie/Ascend/ascend-toolkit/latest/tools/ncs/lib64/:$LD_LIBRARY_PATH
 source /home/yixiaojie/Ascend/ascend-toolkit/set_env.sh
+ncs --disable_sec_cert --ip 172.18.20.187 --port 8000
