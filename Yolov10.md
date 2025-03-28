@@ -47,3 +47,8 @@
 | os2        | speedup (%) of ours, i.e., div(10,9)                         | —              |
 | os3        | maximal conv/linear speedup, i.e., div(13, 14)               | 1.573          |
 | os4        | conv/linear speedup (%) of ours, i.e., div(13,12)            | —              |
+
+
+export LD_LIBRARY_PATH=/home/yixiaojie/Ascend/ascend-toolkit/latest/x86_64-linux/devlib/:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/home/yixiaojie/Ascend/ascend-toolkit/latest/tools/ncs/lib64/:$LD_LIBRARY_PATH
+source /home/yixiaojie/Ascend/ascend-toolkit/set_env.sh
